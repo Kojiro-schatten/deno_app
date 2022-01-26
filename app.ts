@@ -1,5 +1,11 @@
-let message: string;
+const text = "test";
 
-message = 'HI'
+const encoder = new TextEncoder();
+const data = encoder.encode(text);
 
-console.log(message);
+Deno.writeFile('message.txt', data).then(() => {
+  console.log('Wrotten!');
+})
+
+// 実行時、permission指定しないとコンパイルされない。
+// deno run --allow-write=message.txt app.ts
