@@ -1,11 +1,3 @@
-const text = "test";
+import { serve } from "https://deno.land/std@0.122.0/http/server.ts";
 
-const encoder = new TextEncoder();
-const data = encoder.encode(text);
-
-Deno.writeFile('message.txt', data).then(() => {
-  console.log('Wrotten!');
-})
-
-// 実行時、permission指定しないとコンパイルされない。
-// deno run --allow-write=message.txt app.ts
+serve(() => new Response("Hello World\n"));
